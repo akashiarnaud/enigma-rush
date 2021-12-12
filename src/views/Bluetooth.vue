@@ -74,7 +74,6 @@ export default {
         humidity: this.humidity,
         batteryTension: this.batteryTension,
       });
-      console.log("je passe ici");
       localStorage.setItem("data", JSON.stringify(this.data));
     },
     async scanAndStop() {
@@ -130,18 +129,14 @@ export default {
         );
         // const beaconValue = await beaconCharacteristic.readValue();
         await beaconCharacteristic.startNotifications();
-        console.log("> Notifications started");
         beaconCharacteristic.addEventListener(
           "characteristicvaluechanged",
           this.handleNotifications
         );
         this.messsage = "Finalizing process...";
       } catch (error) {
-        // console.log(service);
-        // }
         console.log("[home] scan error " + error);
         this.isPressed = false;
-        console.log(this.isPressed);
       }
     },
   },
