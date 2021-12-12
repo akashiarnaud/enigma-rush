@@ -4,8 +4,10 @@
       <v-app-bar-title>Scan</v-app-bar-title>
     </v-app-bar>
 
-    <v-main>
-      <router-link to="/hitsory">Historique</router-link>
+    <v-main align="center">
+      <router-link to="/">Bluetooth</router-link> |
+      <router-link to="/">MQTT</router-link> |
+      <router-link to="/history">Historique</router-link>
       <router-view />
     </v-main>
   </v-app>

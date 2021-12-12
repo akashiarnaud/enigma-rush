@@ -75,7 +75,7 @@ export default {
         batteryTension: this.batteryTension,
       });
       console.log("je passe ici");
-      localStorage.setItem("data", this.data);
+      localStorage.setItem("data", JSON.stringify(this.data));
     },
     async scanAndStop() {
       try {
@@ -100,7 +100,7 @@ export default {
           console.log("[gatt error]", error.messsage);
           server = await device.gatt.connect();
         }
-        this.messsage = "Discovering service...";
+        this.messsage = "Discovering services...";
         /// battery service
         const batteryService = await server.getPrimaryService(
           "battery_service"
@@ -140,6 +140,8 @@ export default {
         // console.log(service);
         // }
         console.log("[home] scan error " + error);
+        this.isPressed = false;
+        console.log(this.isPressed);
       }
     },
   },
